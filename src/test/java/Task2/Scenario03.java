@@ -51,7 +51,7 @@ public class Scenario03 {
         // Select a seat
         driver.findElement(By.name("SrvcSelectBtnForward")).click();
 
-        //Choose the boarding point and dropping point
+
 
 
 
