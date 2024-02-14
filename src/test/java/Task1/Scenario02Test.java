@@ -28,8 +28,6 @@ public class Scenario02Test {
 
 
         // Select filters
-       // new Select(driver.findElement(By.xpath("//a[contains(@href,'/b?node=16310101')]"))).selectByVisibleText("grocery");
-       // new Select(driver.findElement(By.id("dealSortBy"))).selectByVisibleText("10% off or more");
         driver.findElement(By.className("CheckboxFilter-module__gridFilterCheckbox_9gZBKxneWNZMc30ac9ue7")).click();
         driver.findElement(By.className("CheckboxFilter-module__gridFilterCheckbox_9gZBKxneWNZMc30ac9ue7")).click();
 
