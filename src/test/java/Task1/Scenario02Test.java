@@ -28,8 +28,8 @@ public class Scenario02Test {
 
 
         // Select filters
-        driver.findElement(By.className("CheckboxFilter-module__gridFilterCheckbox_9gZBKxneWNZMc30ac9ue7")).click();
-        driver.findElement(By.className("CheckboxFilter-module__gridFilterCheckbox_9gZBKxneWNZMc30ac9ue7")).click();
+        driver.findElement(By.cssSelector("input[data-csa-c-type=\"uxElement\"]")).click();
+        driver.findElement(By.cssSelector("input[data-csa-c-type=\"uxElement\"]")).click();
 
        // from the discount part choose "10% off or more"
         driver.findElement(By.className("a-text-bold")).click();
