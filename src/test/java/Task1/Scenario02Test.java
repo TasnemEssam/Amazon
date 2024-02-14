@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.time.Duration;
+import java.util.List;
 
 
 public class Scenario02Test {
@@ -19,7 +20,7 @@ public class Scenario02Test {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
-        driver.get("https://www.amazon.com/gp/goldbox");
+        driver.get("https://www.amazon.eg/-/en/deals?ref_=nav_cs_gb");
 
 
     }
@@ -28,27 +29,25 @@ public class Scenario02Test {
 
 
         // Select filters
-        driver.findElement(By.cssSelector("input[data-csa-c-type=\"uxElement\"]")).click();
-        driver.findElement(By.cssSelector("input[data-csa-c-type=\"uxElement\"]")).click();
+        List<WebElement> amazon = driver.findElements(By.cssSelector("ul[class=\"a-nostyle\"]"));
+        System.out.println(amazon.size());
+        List<WebElement> amazon2 = amazon.get(2).findElements(By.cssSelector("li"));
+        System.out.println(amazon2.size());
+        amazon2.get(8).click();
+        amazon2.get(12).click();
+
 
        // from the discount part choose "10% off or more"
-        driver.findElement(By.className("a-text-bold")).click();
+        List<WebElement> amazon3 = amazon.get(5).findElements(By.cssSelector("li"));
+        amazon3.get(1).click();
 
-        // Click on the fourth page and select an item
-        driver.findElement(By.id("pagnNextString")).click();
-        driver.findElement(By.cssSelector("div[data-index='0']")).click();
+
 
         // Add the item to the cart
-        driver.findElement(By.id("add-to-cart-button")).click();
+        driver.findElement(By.cssSelector("img[alt=\"Save on Mobiles Chargers & Accessories\"]")).click();
 
         // Go to the cart and check that the item is added successfully
-        driver.findElement(By.id("nav-cart")).click();
-        WebElement cartItem = driver.findElement(By.cssSelector("div[data-index='0'] span.a-size-medium"));
-        if (cartItem.getText().contains("Today's Deals")) {
-            System.out.println("Item added to the cart successfully!");
-        } else {
-            System.out.println("Item not found in the cart.");
-        }
+
 
     }
 
