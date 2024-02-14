@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 
 public class Scenario01Test {
@@ -17,8 +16,7 @@ public class Scenario01Test {
 
     //login to amazon page
 
-
-@BeforeMethod
+    @BeforeMethod
     public void OpenBrowser() {
 
 
@@ -28,10 +26,9 @@ public class Scenario01Test {
         driver.navigate().to("https://www.amazon.eg");
 
     }
-
     @Test
     public void test() throws InterruptedException {
-        // driver.findElement(By.name("site-search")).click();
+       // driver.findElement(By.name("site-search")).click();
         //driver.findElement(By.name("site-search")).sendKeys("car accessories");
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("car accessories", Keys.ENTER);
         Thread.sleep(3000);

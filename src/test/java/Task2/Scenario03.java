@@ -8,9 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class Scenario03 {
     WebDriver driver;
@@ -31,33 +29,36 @@ public class Scenario03 {
     //testbookbusticket
     public void test() throws InterruptedException {
 
-
-        // Choose "Chikkamagaluru" to "Bengaluru" from the popular routes
-        driver.findElement(By.name("fromPlaceName")).click();
+        // Choose the source and destination
         driver.findElement(By.id("fromPlaceName")).sendKeys("CHIKKAMAGALURU");
-        Thread.sleep(2000);
-
-         driver.findElement(By.name("toPlaceName")).click();
-         driver.findElement(By.id("toPlaceName")).sendKeys("BENGALURU");
+        driver.findElement(By.id("toPlaceName")).sendKeys("BENGALURU");
 
         // Choose the arrival date
-        //driver.findElement(By.name("txtReturnJourneyDate")).sendKeys("02/13/2024");
-        String arrivalDate = "02/13/2024";
-        driver.findElement(By.name("txtReturnJourneyDate")).sendKeys(arrivalDate);
+        driver.findElement(By.id("journeyDate")).clear();
+        driver.findElement(By.id("journeyDate")).sendKeys("2023-03-26");
 
         // Click "Search for bus"
-        driver.findElement(By.className("btn btn-primary btn-lg btn-block btn-booking")).click();
+        driver.findElement(By.id("searchBtn")).click();
 
         // Select a seat
-        driver.findElement(By.name("SrvcSelectBtnForward")).click();
+        driver.findElement(By.xpath("//table[@class='table table-striped seat-avail-table']/tbody/tr[1]/td[3]")).click();
 
+        // Choose the boarding point and dropping point
+        new Select(driver.findElement(By.id("srcTpId"))).selectByVisibleText("MARIYANNAPALYA");
+        new Select(driver.findElement(By.id("destTpId"))).selectByVisibleText("MAJESTIC");
 
+        // Fill the "Customer" and "Passenger" details
+        driver.findElement(By.id("custName")).sendKeys("John Doe");
+        driver.findElement(By.id("mobileNo")).sendKeys("6789125987");
+        driver.findElement(By.id("email")).sendKeys("john.doe@example.com");
 
+        // Fill the passenger details
+        driver.findElement(By.id("paxCorrespondenceName")).sendKeys("Jane Doe");
+        driver.findElement(By.id("paxMobileNo")).sendKeys("6789125987");
+        driver.findElement(By.id("paxEmail")).sendKeys("jane.doe@example.com");
 
-
-
-
-
+        // Click on "make payment"
+        driver.findElement(By.id("bookBtn")).click();
 
 
 
