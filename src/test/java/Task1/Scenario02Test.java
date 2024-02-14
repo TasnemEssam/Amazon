@@ -1,10 +1,9 @@
-package Tests;
+package Task1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -27,13 +26,15 @@ public class Scenario02Test {
     @Test
     public void test() throws InterruptedException {
 
-        // Click on Today's Deals
-        driver.findElement(By.id("dealTitle")).click();
 
         // Select filters
-        new Select(driver.findElement(By.id("dealCategory"))).selectByVisibleText("Headphones");
-        new Select(driver.findElement(By.id("dealFilterType"))).selectByVisibleText("grocery");
-        new Select(driver.findElement(By.id("dealSortBy"))).selectByVisibleText("10% off or more");
+       // new Select(driver.findElement(By.xpath("//a[contains(@href,'/b?node=16310101')]"))).selectByVisibleText("grocery");
+       // new Select(driver.findElement(By.id("dealSortBy"))).selectByVisibleText("10% off or more");
+        driver.findElement(By.className("CheckboxFilter-module__gridFilterCheckbox_9gZBKxneWNZMc30ac9ue7")).click();
+        driver.findElement(By.className("CheckboxFilter-module__gridFilterCheckbox_9gZBKxneWNZMc30ac9ue7")).click();
+
+       // from the discount part choose "10% off or more"
+        driver.findElement(By.className("a-text-bold")).click();
 
         // Click on the fourth page and select an item
         driver.findElement(By.id("pagnNextString")).click();

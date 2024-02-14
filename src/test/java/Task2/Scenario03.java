@@ -18,7 +18,6 @@ public class Scenario03 {
     public void openBrowser() {
 
         driver = new ChromeDriver();
-        //set implicit wait--only written one time
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         driver.manage().window().maximize();
         driver.navigate().to("https://ksrtc.in/oprs-web/guest/home.do?h=1");
@@ -34,31 +33,23 @@ public class Scenario03 {
         driver.findElement(By.id("toPlaceName")).sendKeys("BENGALURU");
 
         // Choose the arrival date
-        driver.findElement(By.id("journeyDate")).clear();
-        driver.findElement(By.id("journeyDate")).sendKeys("2023-03-26");
+        driver.findElement(By.id("txtReturnJourneyDate")).sendKeys("2024-05-26");
+        driver.findElement(By.id("txtJourneyDate")).sendKeys("2024-03-6");
+
 
         // Click "Search for bus"
-        driver.findElement(By.id("searchBtn")).click();
+        driver.findElement(By.className("btn btn-primary btn-lg btn-block btn-booking")).click();
 
         // Select a seat
         driver.findElement(By.xpath("//table[@class='table table-striped seat-avail-table']/tbody/tr[1]/td[3]")).click();
 
         // Choose the boarding point and dropping point
-        new Select(driver.findElement(By.id("srcTpId"))).selectByVisibleText("MARIYANNAPALYA");
-        new Select(driver.findElement(By.id("destTpId"))).selectByVisibleText("MAJESTIC");
+        new Select(driver.findElement(By.id("Forwardboarding-tab"))).selectByVisibleText("MARIYANNAPALYA");
+        new Select(driver.findElement(By.id("Forwarddroping-tab"))).selectByVisibleText("MAJESTIC");
 
         // Fill the "Customer" and "Passenger" details
-        driver.findElement(By.id("custName")).sendKeys("John Doe");
-        driver.findElement(By.id("mobileNo")).sendKeys("6789125987");
-        driver.findElement(By.id("email")).sendKeys("john.doe@example.com");
 
-        // Fill the passenger details
-        driver.findElement(By.id("paxCorrespondenceName")).sendKeys("Jane Doe");
-        driver.findElement(By.id("paxMobileNo")).sendKeys("6789125987");
-        driver.findElement(By.id("paxEmail")).sendKeys("jane.doe@example.com");
 
-        // Click on "make payment"
-        driver.findElement(By.id("bookBtn")).click();
 
 
 
