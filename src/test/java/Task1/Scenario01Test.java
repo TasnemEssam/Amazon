@@ -28,8 +28,7 @@ public class Scenario01Test {
     }
     @Test
     public void test() throws InterruptedException {
-       // driver.findElement(By.name("site-search")).click();
-        //driver.findElement(By.name("site-search")).sendKeys("car accessories");
+
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("car accessories", Keys.ENTER);
         Thread.sleep(3000);
         driver.findElement(By.cssSelector("img[class=\"s-image\"]")).click();
